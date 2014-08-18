@@ -1,4 +1,6 @@
 rproject
 ========
 
-Project management in R
+This is a simple package to manage a project in R.
+
+
