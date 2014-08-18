@@ -1,4 +1,4 @@
-RProject
+rproject
 ========
 
 Project management in R
