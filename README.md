@@ -8,7 +8,7 @@ To install:
 
 the latest development version: 
 
-{{{
+```
 library(devtools)
 install_github("byzheng/rproject")
-}}}
+```
