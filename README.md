@@ -1,7 +1,7 @@
 rproject
 ========
 
-This is a simple package to manage multiple projects in R. The folder structure looks like
+This is a simple package for project management in R. The folder structure looks like
 * Root folder
  * project.ini
  * Project1
