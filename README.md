@@ -20,7 +20,10 @@ In the project.ini, all project will be listed
 p1 = Project1
 p2 = Project2
 ```
+
 Each project has a prefix (short name), e.g. p1 for Project1 and p2 for Project2. All common functions for each project are stored in to Rcode subfolder named as prefix+Functions (e.g. p1Functions.R for Project1 and p2Functions.R for Project2).
+
+
 -----
 To install:
 
