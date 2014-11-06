@@ -38,7 +38,7 @@ install_github("byzheng/rproject")
 How to use
 
 * Source functions in the project. Using  ```project_fun``` to source functions in a project. You can write R codes and functions in the files, but ```project_fun``` will skip will R codes.
-```
+```{r}
 # Only p1Functions.R
 project_fun()
 # All functions in the Rcode folder
