@@ -37,7 +37,7 @@ install_github("byzheng/rproject")
 -----
 How to use
 
-* Source functions in the project. Using  ```project_fun``` to source functions in a project. You can write R codes and functions in the files, but ```project_fun``` will skip will R codes.
+* Source functions in the project. Using  ```project_fun``` to source functions in a project. You can write R codes and functions in the files, but ```project_fun``` will skip all R codes.
 ```{r}
 # Only p1Functions.R
 project_fun()
@@ -47,3 +47,10 @@ project_fun(all = TRUE)
 project_fun(project = 'p2')
 ```
 
+* Generate file path in project. You can run R codes from any subfolders in a project. ```project_filepath``` will generate the correct file path.
+```{r}
+# File in current project
+project_filepath('Resources/tmp.csv')
+# File in another project
+project_filepath('Resources/tmp.csv', project = 'p2')
+```
