@@ -2,10 +2,10 @@
 # * Created:   02:21 PM Monday, 18 August 2014
 # * Copyright: AS IS
 # *
-# * $Revision: 4296 $
-# * $Id: project.R 4296 2014-08-18 04:32:50Z zhe00a $
+# * $Revision: 4534 $
+# * $Id: project.R 4534 2015-02-17 06:17:28Z zhe00a $
 # * $Author: zhe00a $
-# * $Date: 2014-08-18 14:32:50 +1000 (Mon, 18 Aug 2014) $
+# * $Date: 2015-02-17 16:17:28 +1000 (Tue, 17 Feb 2015) $
 
 
 
@@ -39,7 +39,10 @@ project_fun <- function(force = FALSE, project = NULL, all = FALSE)
             file <- project_filepath('Rcode', 
                 sprintf('%sFunctions.R', project_get_para('prefix', project = project)), 
                 project = project)
-            source(file)
+            if (file.exists(file))
+            {
+                source(file)
+            }
         } else
         {
             source_dir(project_filepath('Rcode', project = project))
@@ -92,6 +95,9 @@ project_read <- function(file, project = NULL, var = NULL)
     {
         load(file, envir = parent.frame())
         # return()
+    } else if (type == 'rds')
+    {
+        return(readRDS(file))
     } else
     {
         stop('NOT IMPLEMENTED')
