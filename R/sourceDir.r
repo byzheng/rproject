@@ -2,10 +2,6 @@
 # * Created:   1:49 PM Wednesday, 13 March 2013
 # * Copyright: AS IS
 # *
-# * $Revision: 4296 $
-# * $Id: sourceDir.r 4296 2014-08-18 04:32:50Z zhe00a $
-# * $Author: zhe00a $
-# * $Date: 2014-08-18 14:32:50 +1000 (Mon, 18 Aug 2014) $
 
 #'  Sourcing a bunch of files located from different folders/subfolders.
 #' 

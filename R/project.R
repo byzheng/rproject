@@ -2,10 +2,6 @@
 # * Created:   02:21 PM Monday, 18 August 2014
 # * Copyright: AS IS
 # *
-# * $Revision: 4534 $
-# * $Id: project.R 4534 2015-02-17 06:17:28Z zhe00a $
-# * $Author: zhe00a $
-# * $Date: 2015-02-17 16:17:28 +1000 (Tue, 17 Feb 2015) $
 
 
 
