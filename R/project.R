@@ -1,7 +1,6 @@
 # * Author:    Bangyou Zheng (Bangyou.Zheng@csiro.au)
 # * Created:   02:21 PM Monday, 18 August 2014
 # * Copyright: AS IS
-# *
 
 
 
