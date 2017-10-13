@@ -31,16 +31,29 @@ project_fun <- function(force = FALSE, project = NULL, all = FALSE)
     {
         if (!all)
         {
-            file <- project_filepath('Rcode', 
-                sprintf('%sFunctions.R', project_get_para('prefix', project = project)), 
-                project = project)
-            if (file.exists(file))
+            pattern <- '.*Function.*\\.R'
+            
+            file <- unlist(lapply(
+                    project_filepath(c('Rcode', 'Rcodes', 'rcode', 'rcodes'), project = project),
+                    list.files, 
+                    pattern = pattern,
+                    full.names = TRUE))
+            
+            if (tolower(Sys.info()['sysname']) == 'windows') {
+                file <- unique(tolower(file))
+            }
+            if (length(file) > 1) {
+                stop('Multiple functions are found.')
+            }
+            if (length(file.exists(file)) > 0)
             {
                 source(file)
             }
         } else
         {
-            source_dir(project_filepath('Rcode', project = project))
+                lapply(project_filepath(
+                    c('Rcode', 'Rcodes', 'rcode', 'rcodes'), project = project),
+                    source_dir)
         }
         project_set_pata('source_fun', TRUE, project = project)
     }
@@ -78,12 +91,12 @@ project_read <- function(file, project = NULL, var = NULL)
                 res <- get(var, .GlobalEnv)
             } else
             {
-                res <- read.csv(file, as.is = TRUE)
+                res <- readr::read_csv(file)
                 assign(var, res, .GlobalEnv)
             }
         } else
         {
-            res <- read.csv(file, as.is = TRUE)
+            res <- readr::read_csv(file)
         }
         return(res)
     } else if (type == 'rdata')
@@ -102,14 +115,14 @@ project_read <- function(file, project = NULL, var = NULL)
 #' Search the file from current folder to root 
 #' 
 #' @param filename the filename for search
+#' @export
 project_findfile <- function(filename, base = getwd())
 {
     config <- file.path(base, filename)
     if (!file.exists(config))
     {
-        library(stringr)
         base <- gsub('\\\\', '/', base)
-        c_file <- unlist(lapply(1:str_count(base, '/'), function(x)
+        c_file <- unlist(lapply(seq(1, stringr::str_count(base, '/')), function(x)
             {
                 c_file <- paste(rep('..', x), collapse = '/')
                 c_file <- file.path(base, c_file, filename)
@@ -133,7 +146,11 @@ project_findfile <- function(filename, base = getwd())
 project_readini <- function(filename)
 {
     a <- readLines(filename)
-    a <- a[-grep('^#', a)]
+    pos <- grep('^#', a)
+    if (length(pos) > 0)
+    {
+        a <- a[-pos]
+    }
     a <- a[nchar(a) > 0]
     a <- sub('^\\s+', '', a)
     a <- sub('\\s+$', '', a)
